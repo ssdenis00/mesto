@@ -1,0 +1,7 @@
+.galary__img {
+  width: 282px;
+  height: 282px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 11px 11px 0px 0px;
+}

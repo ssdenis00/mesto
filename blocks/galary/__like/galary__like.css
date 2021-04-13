@@ -1,0 +1,7 @@
+.galary__like {
+  opacity: 0;
+}
+
+.galary__like:checked + .galary__heard {
+  background: url('../../../images/headr-black.svg') no-repeat;
+}

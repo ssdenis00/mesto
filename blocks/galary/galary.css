@@ -1,0 +1,17 @@
+.galary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(282px, 282px));;
+  grid-template-rows: repeat(auto-fit, minmax(300px, 1fr));
+  justify-content: center;
+  gap: 20px;
+  font-family: 'Inter', sans-serif;
+  color: #000;
+  padding-top: 36px;
+}
+
+@media (min-width: 765px) {
+  .galary {
+    column-gap: 17px;
+    padding-top: 50px;
+  }
+}
