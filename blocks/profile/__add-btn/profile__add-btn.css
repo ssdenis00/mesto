@@ -14,6 +14,16 @@
   transition: opacity 0.3s ease-in-out;
 }
 
+.profile__add-btn:focus {
+  outline: none;
+  border: 2px solid #fff;
+}
+
+.profile__add-btn:active {
+  outline: none;
+  border: 2px solid #fff;
+}
+
 .profile__add-btn:hover {
   opacity: 0.5;
 }
