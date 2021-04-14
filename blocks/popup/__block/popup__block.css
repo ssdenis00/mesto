@@ -1,0 +1,18 @@
+.popup__block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 430px;
+  width: 100%;
+  min-height: 322px;
+  border-radius: 11px;
+  background: #fff;
+  padding: 25px 22px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 765px) {
+  .popup__block {
+    padding: 33px 36px;
+  }
+}
