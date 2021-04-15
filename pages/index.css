@@ -36,9 +36,7 @@
 @import url('../blocks/galary/__img/galary__img.css');
 @import url('../blocks/galary/__description/galary__description.css');
 @import url('../blocks/galary/__title/galary__title.css');
-@import url('../blocks/galary/__btn-heard/galary__btn-heard.css');
 @import url('../blocks/galary/__like/galary__like.css');
-@import url('../blocks/galary/__heard/galary__heard.css');
 
 @import url('../blocks/footer/footer.css');
 @import url('../blocks/footer/__author/footer__author.css');

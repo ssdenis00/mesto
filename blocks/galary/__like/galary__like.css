@@ -1,7 +1,13 @@
 .galary__like {
-  opacity: 0;
+  width: 22px;
+  height: 19px;
+  background: url(../../../images/like.svg) no-repeat;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
 }
 
-.galary__like:checked + .galary__heard {
-  background: url('../../../images/headr-black.svg') no-repeat;
+@media (min-width: 1024px) {
+  .galary__like:hover {
+    opacity: 0.5;
+  }
 }

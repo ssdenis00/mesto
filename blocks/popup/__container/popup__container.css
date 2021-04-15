@@ -1,5 +1,4 @@
 .popup__container {
-  position: fixed;
   margin: 0 auto;
   max-width: 470px;
   width: 100%;
@@ -11,6 +10,5 @@
   align-items: center;
   align-content: center;
   font-family: 'Inter', sans-serif;
-  z-index: 3;
   box-sizing: border-box;
 }
