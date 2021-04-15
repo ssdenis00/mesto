@@ -21,7 +21,7 @@
   outline: none;
 }
 
-@media (min-width: 765px) {
+@media (min-width: 768px) {
   .popup__btn {
     font-size: 18px;
     line-height: 22px;

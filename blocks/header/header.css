@@ -3,7 +3,7 @@
   padding: 0 19px;
 }
 
-@media (min-width: 880px) {
+@media (min-width: 1024px) {
   .header {
     padding: 0;
   }

@@ -28,7 +28,7 @@
   opacity: 0.5;
 }
 
-@media (min-width: 765px) {
+@media (min-width: 768px) {
   .profile__add-btn {
     max-width: 150px;
     width: 100%;
