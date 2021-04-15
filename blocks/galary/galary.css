@@ -6,7 +6,7 @@
   gap: 20px;
   font-family: 'Inter', sans-serif;
   color: #000;
-  padding-top: 36px;
+  padding: 36px 19px 0;
 }
 
 @media (min-width: 768px) {
