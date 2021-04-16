@@ -1,11 +1,11 @@
-.content {
+.page__content {
   max-width: 880px;
   margin: 0 auto;
   box-sizing: border-box;
 }
 
 @media (min-width: 1024px) {
-  .content {
+  .page__content {
     box-sizing: content-box;
   }
 }

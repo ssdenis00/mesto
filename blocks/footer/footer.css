@@ -5,7 +5,7 @@ footer {
 }
 
 @media (min-width: 768px) {
-  .footer__author {
+  .footer {
     padding: 67px 19px 36px;
   }
 }

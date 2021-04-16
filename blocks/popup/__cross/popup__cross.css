@@ -1,10 +1,11 @@
 .popup__cross {
-  align-self: flex-end;
+  position: absolute;
+  top: -48px;
+  right: 0;
   width: 37px;
   height: 37px;
   background: center / cover url('../../../images/сlose-icon.svg') no-repeat;
   border: none;
-  margin-bottom: 13px;
   cursor: pointer;
   transition: opacity 0.3s ease-in-out;
 }
@@ -21,12 +22,13 @@
 
 @media (min-width: 768px) {
   .popup__cross {
+    top: -48px;
+    right: -48px;
     width: 56px;
     height: 56px;
-    margin: 0 -48px -6px 0;
   }
 
   .popup__cross:hover {
-    opacity: 0.5;
+    opacity: 0.6;
   }
 }

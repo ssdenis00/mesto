@@ -1,6 +1,8 @@
 .profile__edit-btn {
-  margin: 7px 0 0;
-  background-color: transparent;
+  margin: 9px 0 0;
+  width: 18px;
+  height: 18px;
+  background: center / cover url('../../../images/edit-btn.svg') no-repeat transparent;
   border: 0;
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
@@ -19,11 +21,13 @@
 }
 
 .profile__edit-btn:hover {
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 @media (min-width: 768px) {
   .profile__edit-btn {
     margin: 14px 0 0;
+    width: 24px;
+    height: 24px;
   }
 }

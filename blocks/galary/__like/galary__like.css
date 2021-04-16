@@ -1,9 +1,20 @@
 .galary__like {
   width: 22px;
   height: 19px;
-  background: url(../../../images/like.svg) no-repeat;
+  background: center / cover url(../../../images/like.svg) no-repeat transparent;
   cursor: pointer;
   transition: opacity 0.3s ease-in-out;
+  border: none;
+}
+
+.galary__like:focus {
+  border: none;
+  outline: none;
+}
+
+.galary__like:active {
+  border: none;
+  outline: none;
 }
 
 @media (min-width: 1024px) {

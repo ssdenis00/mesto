@@ -11,87 +11,91 @@
 
 <body>
   <div class="page">
-    <header class="header content">
+    <header class="header page__content">
       <img src="./images/logo.svg" alt="Логотип" class="header__logo">
     </header>
     <main class="main">
-      <div class="popup popup_visible_off">
+      <div class="popup">
         <div class="popup__container">
-          <button class="popup__cross"></button>
           <div class="popup__block">
+            <button class="popup__cross" type="button" aria-label="закрыть всплывающее окно"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
-            <form action="./index.html" class="popup__form">
-              <input type="text" class="popup__form-text popup__form-text_name" value="Жак-Ив Кусто">
-              <input type="text" class="popup__form-text popup__form-text_job" value="Исследователь океана">
-              <input type="submit" class="popup__btn" value="Сохранить">
+            <form action="./index.html" class="popup__form" name="popup__form">
+              <input type="text" class="popup__form-text popup__form-text_input_name" name="popup__form-text_name"
+                value="Жак-Ив Кусто">
+              <input type="text" class="popup__form-text popup__form-text_input_job" name="popup__form-text_job"
+                value="Исследователь океана">
+              <button type="submit" class="popup__btn">Сохранить</button>
             </form>
           </div>
         </div>
       </div>
-      <section class="profile content">
-        <figure class="profile__block">
+      <section class="profile page__content">
+        <div class="profile__block">
           <img src="./images/avatar.jpg" alt="Аватар" class="profile__avatar">
-          <figcaption class="profile__info">
+          <div class="profile__info">
             <div class="profile__text">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
               <p class="profile__description">Исследователь океана</p>
             </div>
-            <button class="profile__edit-btn"><img src="./images/edit-btn.svg" alt="кнопка редактирования профиля"
-                class="profile__edit-btn-img"></button>
-          </figcaption>
-        </figure>
-        <button class="profile__add-btn">+</button>
+            <button class="profile__edit-btn" type="button" aria-label="открыть окно редактирования профиля"></button>
+          </div>
+        </div>
+        <button class="profile__add-btn"><img src="./images/plus.svg" alt="Плюс, добавить запись"
+            class="profile__add-btn-img" type="button" aria-label="добавить запись"></button>
       </section>
-      <section class="galary content">
-        <figure class="galary__item">
-          <img src="./images/karach.jpg" alt="фото галереи" class="galary__img">
-          <figcaption class="galary__description">
-            <h2 class="galary__title">Карачаево-Черкесия</h2>
-            <div class="galary__like"></div>
-          </figcaption>
-        </figure>
-        <figure class="galary__item">
-          <img src="./images/elbrus.jpg" alt="фото галереи" class="galary__img">
-          <figcaption class="galary__description">
-            <h2 class="galary__title">Гора Эльбрус</h2>
-            <div class="galary__like"></div>
-          </figcaption>
-        </figure>
-        <figure class="galary__item">
-          <img src="./images/dombaj.jpg" alt="фото галереи" class="galary__img">
-          <figcaption class="galary__description">
-            <h2 class="galary__title">Домбай</h2>
-            <div class="galary__like"></div>
-          </figcaption>
-        </figure>
-        <figure class="galary__item">
-          <img src="./images/elbrus.jpg" alt="фото галереи" class="galary__img">
-          <figcaption class="galary__description">
-            <h2 class="galary__title">Гора Эльбрус</h2>
-            <div class="galary__like"></div>
-          </figcaption>
-        </figure>
-        <figure class="galary__item">
-          <img src="./images/dombaj.jpg" alt="фото галереи" class="galary__img">
-          <figcaption class="galary__description">
-            <h2 class="galary__title">Домбай</h2>
-            <div class="galary__like"></div>
-          </figcaption>
-        </figure>
-        <figure class="galary__item">
-          <img src="./images/karach.jpg" alt="фото галереи" class="galary__img">
-          <figcaption class="galary__description">
-            <h2 class="galary__title">Карачаево-Черкесия</h2>
-            <div class="galary__like"></div>
-          </figcaption>
-        </figure>
+      <section class="galary page__content">
+        <ul class="galary__grid">
+          <li class="galary__item">
+            <img src="./images/karach.jpg" alt="фото галереи" class="galary__img">
+            <div class="galary__description">
+              <h2 class="galary__title">Карачаево-Черкесия</h2>
+              <button class="galary__like" type="button" aria-label="поставить лайк"></button>
+            </div>
+          </li>
+          <li class="galary__item">
+            <img src="./images/elbrus.jpg" alt="фото галереи" class="galary__img">
+            <div class="galary__description">
+              <h2 class="galary__title">Гора Эльбрус</h2>
+              <button class="galary__like" type="button" aria-label="поставить лайк"></button>
+            </div>
+          </li>
+          <li class="galary__item">
+            <img src="./images/dombaj.jpg" alt="фото галереи" class="galary__img">
+            <div class="galary__description">
+              <h2 class="galary__title">Домбай</h2>
+              <button class="galary__like" type="button" aria-label="поставить лайк"></button>
+            </div>
+          </li>
+          <li class="galary__item">
+            <img src="./images/elbrus.jpg" alt="фото галереи" class="galary__img">
+            <div class="galary__description">
+              <h2 class="galary__title">Гора Эльбрус</h2>
+              <button class="galary__like" type="button" aria-label="поставить лайк"></button>
+            </div>
+          </li>
+          <li class="galary__item">
+            <img src="./images/dombaj.jpg" alt="фото галереи" class="galary__img">
+            <div class="galary__description">
+              <h2 class="galary__title">Домбай</h2>
+              <button class="galary__like" type="button" aria-label="поставить лайк"></button>
+            </div>
+          </li>
+          <li class="galary__item">
+            <img src="./images/karach.jpg" alt="фото галереи" class="galary__img">
+            <div class="galary__description">
+              <h2 class="galary__title">Карачаево-Черкесия</h2>
+              <button class="galary__like" type="button" aria-label="поставить лайк"></button>
+            </div>
+          </li>
+        </ul>
       </section>
     </main>
-    <footer class="footer content">
-      <h3 class="footer__author">© 2021 Mesto Russia</h3>
+    <footer class="footer page__content">
+      <p class="footer__author">© 2021 Mesto Russia</p>
     </footer>
   </div>
-  <script src="./scripts/script.js"></script>
+  <script src="./scripts/index.js"></script>
 </body>
 
 </html>
