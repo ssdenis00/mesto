@@ -15,8 +15,8 @@ function popupVisibleOn() {
 
 function popupVisibleOff() {
   popupVisible.classList.remove('popup_visible-on');
-
 }
+
 function formSubmitHandler(evt) {
   evt.preventDefault();
   nameProfile.textContent = nameInput.value;

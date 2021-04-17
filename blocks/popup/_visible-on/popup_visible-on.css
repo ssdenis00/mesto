@@ -1,3 +1,5 @@
 .popup_visible-on {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
