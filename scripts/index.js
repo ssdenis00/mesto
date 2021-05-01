@@ -18,15 +18,12 @@ const galaryGrid = document.querySelector('.galary__grid');
 const galaryTemplate = document.querySelector('#galary__item').content;
 const galaryItem = galaryTemplate.querySelector('.galary__item');
 const formElementAddCard = document.querySelector('.popup__form_type_add-card');
-const trashBtn = document.querySelectorAll('.galary__delete-item');
 const imgPopup = document.querySelector('.popup_type_img');
 const closeImgBtn = document.querySelector('.popup__cross_type_img');
-const imagesLinks = document.querySelectorAll('.galary__link-img');
-const btnLike = document.querySelectorAll('.galary__like');
 
 function openPopup(elem) {
   elem.classList.add('popup_visible-on');
-};
+}
 
 function openPopupEdit() {
   openPopup(profilePopup);
@@ -36,23 +33,23 @@ function openPopupEdit() {
 
 function closePopup(elem) {
   elem.classList.remove('popup_visible-on');
-};
+}
 
 function handleProfileSubmit(evt) {
   evt.preventDefault();
   nameProfile.textContent = nameInput.value;
   jobProfile.textContent = jobInput.value;
   closePopup(profilePopup);
-};
+}
 
 function openPopupAddCards() {
   openPopup(popupAddCard);
   formElementAddCard.reset();
-};
+}
 
 function addElementInGalary(elem) {
   galaryGrid.prepend(elem);
-};
+}
 
 function handleOpenPopupImg(elem) {
   elem.addEventListener('click', function (evt) {
@@ -65,7 +62,7 @@ function handleOpenPopupImg(elem) {
     image.alt = 'фото ' + description.textContent;
     descriptionElement.textContent = description.textContent;
   });
-};
+}
 
 function handleTrashButton(elem) {
   elem.addEventListener('click', function (evt) {
@@ -103,7 +100,7 @@ function handleAddCardSubmit(evt) {
   const galaryImage = galaryItemNew.querySelector('.galary__img');
   const galaryLike = galaryItemNew.querySelector('.galary__like');
   const galaryTrash = galaryItemNew.querySelector('.galary__delete-item');
-  const galaryImageLink = galaryItemNew.querySelectorAll('.galary__link-img');
+  const galaryImageLink = galaryItemNew.querySelector('.galary__link-img');
   evt.preventDefault();
   galaryTitle.textContent = titleInput.value;
   galaryImage.src = imgInput.value;
@@ -113,7 +110,7 @@ function handleAddCardSubmit(evt) {
   handleLikeButton(galaryLike);
   handleTrashButton(galaryTrash);
   handleOpenPopupImg(galaryImageLink);
-};
+}
 
 formElementAddCard.addEventListener('submit', handleAddCardSubmit);
 
@@ -123,7 +120,7 @@ formElementEdit.addEventListener('submit', handleProfileSubmit);
 
 closeEditBtn.addEventListener('click', function () {
   closePopup(profilePopup);
-});
+})
 
 editBtn.addEventListener('click', openPopupEdit);
 
