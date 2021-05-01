@@ -96,28 +96,34 @@ const galaryGrid = document.querySelector('.galary__grid');
 const galaryTemplate = document.querySelector('#galary__item').content;
 const galaryItem = galaryTemplate.querySelector('.galary__item');
 
+function addElementInGalary(element) {
+  galaryGrid.prepend(element);
+}
+
 initialCards.forEach((item => {
   const galaryItemNew = galaryItem.cloneNode(true);
   const galaryTitle = galaryItemNew.querySelector('.galary__title');
   const galaryImage = galaryItemNew.querySelector('.galary__img');
   galaryTitle.textContent = item.name;
   galaryImage.src = item.link;
-  galaryGrid.prepend(galaryItemNew);
+  addElementInGalary(galaryItemNew);
 }));
 
 
 
 function formAddCard(evt) {
   const galaryItemNew = galaryItem.cloneNode(true);
+  const galaryTitle = galaryItemNew.querySelector('.galary__title');
+  const galaryImage = galaryItemNew.querySelector('.galary__img');
   let obj = {
     name: titleInput.value,
     link: imgInput.value
   };
   evt.preventDefault();
   initialCards.push(obj);
-  galaryItemNew.querySelector('.galary__title').textContent = obj.name;
-  galaryItemNew.querySelector('.galary__img').src = obj.link;
-  galaryGrid.prepend(galaryItemNew);
+  galaryTitle.textContent = obj.name;
+  galaryImage.src.src = obj.link;
+  addElementInGalary(galaryItemNew);
   removeVisible(popupAddCardVisible);
 }
 
