@@ -102,7 +102,7 @@ initialCards.forEach((item => {
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
-  createCard(imgInput.value, imgInput.value);
+  createCard(titleInput.value, imgInput.value);
   closePopup(popupAddCard);
 }
 
