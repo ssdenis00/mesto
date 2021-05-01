@@ -53,6 +53,7 @@ function addElementInGalary(elem) {
 
 function handleOpenPopupImg(elem) {
   elem.addEventListener('click', function (evt) {
+    evt.preventDefault();
     const eventTarget = evt.target;
     const description = eventTarget.offsetParent.querySelector('.galary__title');
     const image = document.querySelector('.popup__img');
@@ -67,7 +68,6 @@ function handleOpenPopupImg(elem) {
 function handleTrashButton(elem) {
   elem.addEventListener('click', function (evt) {
     const eventTarget = evt.target;
-    console.log(eventTarget);
     eventTarget.closest('.galary__item').remove();
   });
 }
@@ -79,37 +79,31 @@ function handleLikeButton(elem) {
   });
 }
 
-initialCards.forEach((item => {
+function createCard(cardTitle, cardImg) {
   const galaryItemNew = galaryItem.cloneNode(true);
   const galaryTitle = galaryItemNew.querySelector('.galary__title');
   const galaryImage = galaryItemNew.querySelector('.galary__img');
   const galaryLike = galaryItemNew.querySelector('.galary__like');
   const galaryTrash = galaryItemNew.querySelector('.galary__delete-item');
   const galaryImageLink = galaryItemNew.querySelector('.galary__link-img');
-  galaryTitle.textContent = item.name;
-  galaryImage.src = item.link;
+  galaryTitle.textContent = cardTitle;
+  galaryImage.src = cardImg;
+  galaryImage.alt = 'фото ' + cardTitle;
   addElementInGalary(galaryItemNew);
   handleLikeButton(galaryLike);
   handleTrashButton(galaryTrash);
   handleOpenPopupImg(galaryImageLink);
+  return galaryItemNew;
+}
+
+initialCards.forEach((item => {
+  createCard(item.name, item.link);
 }));
 
 function handleAddCardSubmit(evt) {
-  const galaryItemNew = galaryItem.cloneNode(true);
-  const galaryTitle = galaryItemNew.querySelector('.galary__title');
-  const galaryImage = galaryItemNew.querySelector('.galary__img');
-  const galaryLike = galaryItemNew.querySelector('.galary__like');
-  const galaryTrash = galaryItemNew.querySelector('.galary__delete-item');
-  const galaryImageLink = galaryItemNew.querySelector('.galary__link-img');
   evt.preventDefault();
-  galaryTitle.textContent = titleInput.value;
-  galaryImage.src = imgInput.value;
-  galaryImage.alt = 'фото ' + titleInput.value;
-  addElementInGalary(galaryItemNew);
+  createCard(imgInput.value, imgInput.value);
   closePopup(popupAddCard);
-  handleLikeButton(galaryLike);
-  handleTrashButton(galaryTrash);
-  handleOpenPopupImg(galaryImageLink);
 }
 
 formElementAddCard.addEventListener('submit', handleAddCardSubmit);
