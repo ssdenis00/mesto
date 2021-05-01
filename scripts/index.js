@@ -109,8 +109,6 @@ initialCards.forEach((item => {
   addElementInGalary(galaryItemNew);
 }));
 
-
-
 function formAddCard(evt) {
   const galaryItemNew = galaryItem.cloneNode(true);
   const galaryTitle = galaryItemNew.querySelector('.galary__title');
