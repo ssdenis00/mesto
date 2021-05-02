@@ -1,3 +1,4 @@
 .galary__like_active {
   background: center / cover url(../../../../images/headr-black.svg) no-repeat transparent;
+  -webkit-background-size: cover;
 }
