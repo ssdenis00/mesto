@@ -2,8 +2,7 @@
   margin: 9px 0 0;
   width: 18px;
   height: 18px;
-  background: center / 100% url('../../../images/edit-btn.svg') no-repeat transparent;
-  -webkit-background-size: 100%;
+  background: center / contain url('../../../images/edit-btn.svg') no-repeat transparent;
   border: none;
   outline: none;
   cursor: pointer;
