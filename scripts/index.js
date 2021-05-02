@@ -51,58 +51,59 @@ function addElementInGalary(elem) {
   galaryGrid.prepend(elem);
 }
 
-function handleOpenPopupImg(elem) {
-  elem.addEventListener('click', function (evt) {
-    evt.preventDefault();
-    const eventTarget = evt.target;
-    const description = eventTarget.offsetParent.querySelector('.galary__title');
-    const image = document.querySelector('.popup__img');
-    const descriptionElement = document.querySelector('.popup__description');
-    openPopup(imgPopup);
-    image.src = eventTarget.src;
-    image.alt = 'фото ' + description.textContent;
-    descriptionElement.textContent = description.textContent;
-  });
+function handleOpenPopupImg(evt) {
+  evt.preventDefault();
+  const eventTarget = evt.target;
+  const description = eventTarget.offsetParent.querySelector('.galary__title');
+  const image = document.querySelector('.popup__img');
+  const descriptionElement = document.querySelector('.popup__description');
+  openPopup(imgPopup);
+  image.src = eventTarget.src;
+  image.alt = 'фото ' + description.textContent;
+  descriptionElement.textContent = description.textContent;
 }
 
-function handleTrashButton(elem) {
-  elem.addEventListener('click', function (evt) {
-    const eventTarget = evt.target;
-    eventTarget.closest('.galary__item').remove();
-  });
+function handleTrashButton(evt) {
+  const eventTarget = evt.target;
+  eventTarget.closest('.galary__item').remove();
 }
 
-function handleLikeButton(elem) {
-  elem.addEventListener('click', function (evt) {
-    const eventTarget = evt.target;
-    eventTarget.classList.toggle('galary__like_active');
-  });
+function handleLikeButton(evt) {
+  const eventTarget = evt.target;
+  eventTarget.classList.toggle('galary__like_active');
 }
 
-function createCard(cardTitle, cardImg) {
+function createCard(cardData) {
   const galaryItemNew = galaryItem.cloneNode(true);
   const galaryTitle = galaryItemNew.querySelector('.galary__title');
   const galaryImage = galaryItemNew.querySelector('.galary__img');
   const galaryLike = galaryItemNew.querySelector('.galary__like');
   const galaryTrash = galaryItemNew.querySelector('.galary__delete-item');
   const galaryImageLink = galaryItemNew.querySelector('.galary__link-img');
-  galaryTitle.textContent = cardTitle;
-  galaryImage.src = cardImg;
-  galaryImage.alt = 'фото ' + cardTitle;
-  addElementInGalary(galaryItemNew);
-  handleLikeButton(galaryLike);
-  handleTrashButton(galaryTrash);
-  handleOpenPopupImg(galaryImageLink);
+  galaryTitle.textContent = cardData.name;
+  galaryImage.src = cardData.link;
+  galaryImage.alt = 'фото ' + cardData.name;
+  galaryLike.addEventListener('click', handleLikeButton);
+  galaryTrash.addEventListener('click', handleTrashButton);
+  galaryImageLink.addEventListener('click', handleOpenPopupImg);
   return galaryItemNew;
 }
 
 initialCards.forEach((item => {
-  createCard(item.name, item.link);
+  const obj = {
+    name: item.name,
+    link: item.link
+  }
+  addElementInGalary(createCard(obj));
 }));
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
-  createCard(titleInput.value, imgInput.value);
+  const obj = {
+    name: titleInput.value,
+    link: imgInput.value
+  }
+  addElementInGalary(createCard(obj));
   closePopup(popupAddCard);
 }
 
@@ -112,16 +113,10 @@ addCardBtn.addEventListener('click', openPopupAddCards);
 
 formElementEdit.addEventListener('submit', handleProfileSubmit);
 
-closeEditBtn.addEventListener('click', function () {
-  closePopup(profilePopup);
-})
+closeEditBtn.addEventListener('click', () => closePopup(profilePopup));
 
 editBtn.addEventListener('click', openPopupEdit);
 
-closeAddCardBtn.addEventListener('click', function () {
-  closePopup(popupAddCard);
-});
+closeAddCardBtn.addEventListener('click', () => closePopup(popupAddCard));
 
-closeImgBtn.addEventListener('click', function () {
-  closePopup(imgPopup);
-});
+closeImgBtn.addEventListener('click', () => closePopup(imgPopup));
