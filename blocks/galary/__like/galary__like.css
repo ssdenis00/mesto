@@ -1,11 +1,12 @@
 .galary__like {
   width: 22px;
   height: 19px;
-  background: center / cover url(../../../images/like.svg) no-repeat transparent;
-  -webkit-background-size: cover;
+  background: center / 100% url(../../../images/like.svg) no-repeat transparent;
+  -webkit-background-size: 100%;
   cursor: pointer;
   transition: opacity 0.3s ease-in-out;
   border: none;
+  outline: none;
 }
 
 .galary__like:focus {

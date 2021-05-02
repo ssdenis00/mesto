@@ -2,10 +2,10 @@
   margin: 9px 0 0;
   width: 18px;
   height: 18px;
-  background: center / cover url('../../../images/edit-btn.svg') no-repeat transparent;
-  -webkit-background-size: cover;
-  border: 0;
-  outline: 0;
+  background: center / 100% url('../../../images/edit-btn.svg') no-repeat transparent;
+  -webkit-background-size: 100%;
+  border: none;
+  outline: none;
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   -webkit-tap-highlight-color: transparent;
