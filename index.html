@@ -21,10 +21,12 @@
             aria-label="закрыть всплывающее окно"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
           <form action="./index.html" class="popup__form popup__form_type_edit" name="popup__form-edit">
-            <input type="text" class="popup__form-text popup__form-text_input_name" name="popup__form-text_name"
-              value="">
-            <input type="text" class="popup__form-text popup__form-text_input_job" name="popup__form-text_job" value="">
-            <button type="submit" class="popup__btn popup__btn_type_edit">Сохранить</button>
+            <input type="text" class="popup__form-text popup__form-text_input_name popup__form-text_state_error"
+              name="popup__form-text_name" required>
+            <span class="popup__form-error">Вы пропустили это поле</span>
+            <input type="text" class="popup__form-text popup__form-text_input_job" name="popup__form-text_job" required>
+            <span class="popup__form-error"></span>
+            <button type="submit" class="popup__btn popup__btn_type_edit popup__btn_disabled">Сохранить</button>
           </form>
         </div>
       </div>
@@ -35,9 +37,11 @@
           <h2 class="popup__title">Новое Место</h2>
           <form action="./index.html" class="popup__form popup__form_type_add-card" name="popup__form-add">
             <input type="text" class="popup__form-text popup__form-text_input_title" name="popup__form-text_title"
-              value="" placeholder="Название">
-            <input type="text" class="popup__form-text popup__form-text_input_img" name="popup__form-text_img" value=""
-              placeholder="Ссылка на картинку">
+              value="" placeholder="Название" required>
+            <span class="popup__form-error"></span>
+            <input type="url" class="popup__form-text popup__form-text_input_img" name="popup__form-text_img" value=""
+              placeholder="Ссылка на картинку" required>
+            <span class="popup__form-error"></span>
             <button type="submit" class="popup__btn popup__btn_type_card">Сохранить</button>
           </form>
         </div>
@@ -85,6 +89,7 @@
       </div>
     </li>
   </template>
+  <script src="./scripts/validate.js"></script>
   <script src="./scripts/initial-cards.js"></script>
   <script src="./scripts/index.js"></script>
 </body>
