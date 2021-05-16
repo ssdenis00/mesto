@@ -20,13 +20,14 @@
           <button class="popup__cross popup__cross_type_edit" type="button"
             aria-label="закрыть всплывающее окно"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form action="./index.html" class="popup__form popup__form_type_edit" name="popup__form-edit">
-            <input type="text" class="popup__form-text popup__form-text_input_name popup__form-text_state_error"
-              name="popup__form-text_name" required>
-            <span class="popup__form-error">Вы пропустили это поле</span>
-            <input type="text" class="popup__form-text popup__form-text_input_job" name="popup__form-text_job" required>
-            <span class="popup__form-error"></span>
-            <button type="submit" class="popup__btn popup__btn_type_edit popup__btn_disabled">Сохранить</button>
+          <form action="./index.html" class="popup__form popup__form_type_edit" name="popup__form-edit" novalidate>
+            <input type="text" id="edit-title" class="popup__form-text popup__form-text_input_name"
+              name="popup__form-text_name" minlength="2" maxlength="40" required>
+            <span class="popup__form-error" id="edit-title-error"></span>
+            <input type="text" id="edit-description" class="popup__form-text popup__form-text_input_job"
+              name="popup__form-text_job" minlength="2" maxlength="200" required>
+            <span class="popup__form-error" id="edit-description-error"></span>
+            <button type="submit" class="popup__btn popup__btn_type_edit">Сохранить</button>
           </form>
         </div>
       </div>
@@ -34,14 +35,14 @@
         <div class="popup__container">
           <button class="popup__cross popup__cross_type_add-card" type="button"
             aria-label="закрыть всплывающее окно"></button>
-          <h2 class="popup__title">Новое Место</h2>
+          <h2 class="popup__title">Новое место</h2>
           <form action="./index.html" class="popup__form popup__form_type_add-card" name="popup__form-add">
-            <input type="text" class="popup__form-text popup__form-text_input_title" name="popup__form-text_title"
-              value="" placeholder="Название" required>
-            <span class="popup__form-error"></span>
-            <input type="url" class="popup__form-text popup__form-text_input_img" name="popup__form-text_img" value=""
-              placeholder="Ссылка на картинку" required>
-            <span class="popup__form-error"></span>
+            <input type="text" id="place-name" class="popup__form-text popup__form-text_input_title"
+              name="popup__form-text_title" placeholder="Название" minlength="2" maxlength="30" required>
+            <span class="popup__form-error" id="place-name-error"></span>
+            <input type="url" id="place-link" class="popup__form-text popup__form-text_input_img"
+              name="popup__form-text_img" placeholder="Ссылка на картинку" required>
+            <span class="popup__form-error" id="place-link-error"></span>
             <button type="submit" class="popup__btn popup__btn_type_card">Сохранить</button>
           </form>
         </div>
@@ -89,6 +90,7 @@
       </div>
     </li>
   </template>
+  <script src="./scripts/config-validate.js"></script>
   <script src="./scripts/validate.js"></script>
   <script src="./scripts/initial-cards.js"></script>
   <script src="./scripts/index.js"></script>

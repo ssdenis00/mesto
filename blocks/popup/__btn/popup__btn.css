@@ -5,7 +5,7 @@
   cursor: pointer;
   font-size: 14px;
   line-height: 17px;
-  margin-top: 19px;
+  margin-top: 33px;
   border: 0;
   border-radius: 2px;
   transition: background-color 0.3s ease-in-out;
@@ -19,6 +19,18 @@
 .popup__btn:active {
   border: none;
   outline: none;
+}
+
+.popup__btn:disabled {
+  border: 1px solid #000;
+  opacity: 0.2;
+  background: transparent;
+  color: #000;
+  cursor: default;
+}
+
+.popup__btn:disabled:hover {
+  background: transparent;
 }
 
 @media (min-width: 768px) {

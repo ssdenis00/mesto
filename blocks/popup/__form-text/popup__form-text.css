@@ -4,4 +4,13 @@
   padding: 5px 0 10px;
   font-size: 14px;
   line-height: 17px;
+  margin: 15px 0 0;
+}
+
+.popup__form-text:focus {
+  outline: 0;
+}
+
+.popup__form-text:active {
+  outline: 0;
 }
