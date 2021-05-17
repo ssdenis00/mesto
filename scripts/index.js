@@ -7,48 +7,46 @@ const popupBtnCard = document.querySelector('.popup__btn_type_card');
 const titleInput = document.querySelector('.popup__form-text_input_title');
 const imgInput = document.querySelector('.popup__form-text_input_img');
 const popupAddCard = document.querySelector('.popup_type_add-card');
-const closeEditBtn = document.querySelector('.popup__cross_type_edit');
-const editBtn = document.querySelector('.profile__edit-btn');
+const buttonCloseProfilePopup = document.querySelector('.popup__cross_type_edit');
+const buttonOpenProfilePopup = document.querySelector('.profile__edit-btn');
 const nameProfile = document.querySelector('.profile__name');
 const jobProfile = document.querySelector('.profile__description');
 const popupTitle = document.querySelector('.popup__title');
-const addCardBtn = document.querySelector('.profile__add-btn');
-const closeAddCardBtn = document.querySelector('.popup__cross_type_add-card');
+const buttonOpenAddCardPopup = document.querySelector('.profile__add-btn');
+const buttonCloseAddCardPopup = document.querySelector('.popup__cross_type_add-card');
 const galaryGrid = document.querySelector('.galary__grid');
 const galaryTemplate = document.querySelector('#galary__item').content;
 const galaryItem = galaryTemplate.querySelector('.galary__item');
 const formElementAddCard = document.querySelector('.popup__form_type_add-card');
 const imgPopup = document.querySelector('.popup_type_img');
-const closeImgBtn = document.querySelector('.popup__cross_type_img');
+const buttonCloseImgPopup = document.querySelector('.popup__cross_type_img');
 
-function openPopup(elem, func) {
+function openPopup(elem) {
   elem.classList.add('popup_visible-on');
-  document.addEventListener('keydown', func);
+  document.addEventListener('keydown', closePopupEsc);
 }
 
-function openPopupEdit() {
-  openPopup(profilePopup, setCloseProfilePopupEscListener);
+function openPopupEditProfile() {
+  openPopup(profilePopup);
   nameInput.value = nameProfile.textContent;
   jobInput.value = jobProfile.textContent;
-  enableValidation(config);
 }
 
-function closePopup(elem, func) {
+function closePopup(elem) {
   elem.classList.remove('popup_visible-on');
-  document.removeEventListener('keydown', func);
+  document.removeEventListener('keydown', closePopupEsc);
 }
 
 function handleProfileSubmit(evt) {
   evt.preventDefault();
   nameProfile.textContent = nameInput.value;
   jobProfile.textContent = jobInput.value;
-  closePopup(profilePopup, setCloseProfilePopupEscListener);
+  closePopup(profilePopup);
 }
 
 function openPopupAddCards() {
-  openPopup(popupAddCard, setCloseAddCardPopupEscListener);
+  openPopup(popupAddCard);
   formElementAddCard.reset();
-  enableValidation(config);
 }
 
 function addElementInGalary(elem) {
@@ -61,7 +59,7 @@ function handleOpenPopupImg(evt) {
   const description = eventTarget.offsetParent.querySelector('.galary__title');
   const image = document.querySelector('.popup__img');
   const descriptionElement = document.querySelector('.popup__description');
-  openPopup(imgPopup, setCloseImgPopupEscListener);
+  openPopup(imgPopup);
   image.src = eventTarget.src;
   image.alt = 'фото ' + description.textContent;
   descriptionElement.textContent = description.textContent;
@@ -94,11 +92,11 @@ function createCard(cardData) {
 }
 
 initialCards.forEach((item => {
-  const obj = {
+  item = {
     name: item.name,
     link: item.link
   }
-  addElementInGalary(createCard(obj));
+  addElementInGalary(createCard(item));
 }));
 
 function handleAddCardSubmit(evt) {
@@ -108,49 +106,40 @@ function handleAddCardSubmit(evt) {
     link: imgInput.value
   }
   addElementInGalary(createCard(obj));
-  closePopup(popupAddCard, setCloseAddCardPopupEscListener);
+  closePopup(popupAddCard);
 }
 
-function closeOverlay(evt, position, func) {
+function closeOverlay(evt, position) {
   if (evt.target === evt.currentTarget) {
-    closePopup(position, func);
+    closePopup(position);
   }
 }
 
-function closePopupEsc(evt, element, func) {
+function closePopupEsc(evt) {
   if (evt.key === 'Escape') {
-    closePopup(element, func);
+    const popup = document.querySelector('.popup_visible-on');
+    closePopup(popup);
   }
 }
 
-function setCloseProfilePopupEscListener(evt) {
-  closePopupEsc(evt, profilePopup, setCloseProfilePopupEscListener);
-}
-
-function setCloseAddCardPopupEscListener(evt) {
-  closePopupEsc(evt, popupAddCard, setCloseAddCardPopupEscListener);
-}
-
-function setCloseImgPopupEscListener(evt) {
-  closePopupEsc(evt, imgPopup, setCloseImgPopupEscListener);
-}
+enableValidation(config);
 
 formElementAddCard.addEventListener('submit', handleAddCardSubmit);
 
-addCardBtn.addEventListener('click', openPopupAddCards);
+buttonOpenAddCardPopup.addEventListener('click', openPopupAddCards);
 
 formElementEdit.addEventListener('submit', handleProfileSubmit);
 
-closeEditBtn.addEventListener('click', () => closePopup(profilePopup, setCloseProfilePopupEscListener));
+buttonCloseProfilePopup.addEventListener('click', () => closePopup(profilePopup));
 
-editBtn.addEventListener('click', openPopupEdit);
+buttonOpenProfilePopup.addEventListener('click', openPopupEditProfile);
 
-closeAddCardBtn.addEventListener('click', () => closePopup(popupAddCard, setCloseAddCardPopupEscListener));
+buttonCloseAddCardPopup.addEventListener('click', () => closePopup(popupAddCard));
 
-closeImgBtn.addEventListener('click', () => closePopup(imgPopup, setCloseImgPopupEscListener));
+buttonCloseImgPopup.addEventListener('click', () => closePopup(imgPopup));
 
-profilePopup.addEventListener('click', (evt) => { closeOverlay(evt, profilePopup, setCloseProfilePopupEscListener) });
+profilePopup.addEventListener('click', (evt) => { closeOverlay(evt, profilePopup) });
 
-popupAddCard.addEventListener('click', (evt) => { closeOverlay(evt, popupAddCard, setCloseAddCardPopupEscListener) });
+popupAddCard.addEventListener('click', (evt) => { closeOverlay(evt, popupAddCard) });
 
-imgPopup.addEventListener('click', (evt) => { closeOverlay(evt, imgPopup, setCloseImgPopupEscListener) });
+imgPopup.addEventListener('click', (evt) => { closeOverlay(evt, imgPopup) });
