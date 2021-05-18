@@ -37,10 +37,10 @@ const setBtnState = (btnElement, inputList) => {
 }
 
 const setEventListeners = (formElement, config) => {
-  const { inputSelector, ButtonClass, ...restConfig } = config;
+  const { inputSelector, buttonClass, ...restConfig } = config;
   const inputList = Array.from(formElement.querySelectorAll(inputSelector));
 
-  const btnElement = formElement.querySelector(ButtonClass);
+  const btnElement = formElement.querySelector(buttonClass);
 
   inputList.forEach(inputElement => {
     inputElement.addEventListener('input', () => {

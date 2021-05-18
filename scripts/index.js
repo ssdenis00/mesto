@@ -1,9 +1,7 @@
 const profilePopup = document.querySelector('.popup_type_edit');
-const formElementEdit = document.querySelector('.popup__form_type_edit');
-const nameInput = formElementEdit.querySelector('.popup__form-text_input_name');
-const jobInput = formElementEdit.querySelector('.popup__form-text_input_job');
-const popupBtnEdit = document.querySelector('.popup__btn_type_edit');
-const popupBtnCard = document.querySelector('.popup__btn_type_card');
+const formEditProfile = document.querySelector('.popup__form_type_edit');
+const nameInput = formEditProfile.querySelector('.popup__form-text_input_name');
+const jobInput = formEditProfile.querySelector('.popup__form-text_input_job');
 const titleInput = document.querySelector('.popup__form-text_input_title');
 const imgInput = document.querySelector('.popup__form-text_input_img');
 const popupAddCard = document.querySelector('.popup_type_add-card');
@@ -17,24 +15,40 @@ const buttonCloseAddCardPopup = document.querySelector('.popup__cross_type_add-c
 const galaryGrid = document.querySelector('.galary__grid');
 const galaryTemplate = document.querySelector('#galary__item').content;
 const galaryItem = galaryTemplate.querySelector('.galary__item');
-const formElementAddCard = document.querySelector('.popup__form_type_add-card');
+const formAddCard = document.querySelector('.popup__form_type_add-card');
 const imgPopup = document.querySelector('.popup_type_img');
 const buttonCloseImgPopup = document.querySelector('.popup__cross_type_img');
 
 function openPopup(elem) {
+  const inputList = Array.from(elem.querySelectorAll(config.inputSelector));
+  const submit = elem.querySelector(config.buttonClass);
+  const form = elem.querySelector(config.formSelector);
+
   elem.classList.add('popup_visible-on');
   document.addEventListener('keydown', closePopupEsc);
+
+  inputList.forEach(item => {
+    checkInputValidity(form, item, config);
+    setBtnState(submit, inputList);
+  });
 }
 
 function openPopupEditProfile() {
-  openPopup(profilePopup);
   nameInput.value = nameProfile.textContent;
   jobInput.value = jobProfile.textContent;
+  openPopup(profilePopup);
 }
 
 function closePopup(elem) {
+  const form = elem.querySelector(config.formSelector);
+  const inputList = Array.from(elem.querySelectorAll(config.inputSelector));
+
   elem.classList.remove('popup_visible-on');
   document.removeEventListener('keydown', closePopupEsc);
+
+  inputList.forEach(item => {
+    hideInputError(form, item, config); // если закрыть попап добавления карточки с ошибкой и открыть редактирование профиля без ошибки, первый инпут становится недоступным из за своего места расположения. поэтому добавил при закрытии чтобы скрывало ошибки.
+  });
 }
 
 function handleProfileSubmit(evt) {
@@ -45,8 +59,8 @@ function handleProfileSubmit(evt) {
 }
 
 function openPopupAddCards() {
+  formAddCard.reset();
   openPopup(popupAddCard);
-  formElementAddCard.reset();
 }
 
 function addElementInGalary(elem) {
@@ -92,10 +106,6 @@ function createCard(cardData) {
 }
 
 initialCards.forEach((item => {
-  item = {
-    name: item.name,
-    link: item.link
-  }
   addElementInGalary(createCard(item));
 }));
 
@@ -124,11 +134,11 @@ function closePopupEsc(evt) {
 
 enableValidation(config);
 
-formElementAddCard.addEventListener('submit', handleAddCardSubmit);
+formAddCard.addEventListener('submit', handleAddCardSubmit);
 
 buttonOpenAddCardPopup.addEventListener('click', openPopupAddCards);
 
-formElementEdit.addEventListener('submit', handleProfileSubmit);
+formEditProfile.addEventListener('submit', handleProfileSubmit);
 
 buttonCloseProfilePopup.addEventListener('click', () => closePopup(profilePopup));
 
