@@ -40,15 +40,8 @@ function openPopupEditProfile() {
 }
 
 function closePopup(elem) {
-  const form = elem.querySelector(config.formSelector);
-  const inputList = Array.from(elem.querySelectorAll(config.inputSelector));
-
   elem.classList.remove('popup_visible-on');
   document.removeEventListener('keydown', closePopupEsc);
-
-  inputList.forEach(item => {
-    hideInputError(form, item, config); // если закрыть попап добавления карточки с ошибкой и открыть редактирование профиля без ошибки, первый инпут становится недоступным из за своего места расположения. поэтому добавил при закрытии чтобы скрывало ошибки.
-  });
 }
 
 function handleProfileSubmit(evt) {
