@@ -125,8 +125,6 @@ function closePopupEsc(evt) {
   }
 }
 
-enableValidation(config);
-
 formAddCard.addEventListener('submit', handleAddCardSubmit);
 
 buttonOpenAddCardPopup.addEventListener('click', openPopupAddCards);

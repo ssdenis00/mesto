@@ -60,3 +60,5 @@ const enableValidation = (config) => {
     setEventListeners(formElement, restConfig);
   });
 }
+
+enableValidation(config);
