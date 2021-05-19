@@ -143,8 +143,8 @@ buttonCloseAddCardPopup.addEventListener('click', () => closePopup(popupAddCard)
 
 buttonCloseImgPopup.addEventListener('click', () => closePopup(imgPopup));
 
-profilePopup.addEventListener('click', (evt) => { closeOverlay(evt) });
+profilePopup.addEventListener('click', closeOverlay);
 
-popupAddCard.addEventListener('click', (evt) => { closeOverlay(evt) });
+popupAddCard.addEventListener('click', closeOverlay);
 
-imgPopup.addEventListener('click', (evt) => { closeOverlay(evt) });
+imgPopup.addEventListener('click', closeOverlay);
