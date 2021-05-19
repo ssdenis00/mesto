@@ -20,15 +20,17 @@ const imgPopup = document.querySelector('.popup_type_img');
 const buttonCloseImgPopup = document.querySelector('.popup__cross_type_img');
 
 function openPopup(elem) {
-  const inputList = Array.from(elem.querySelectorAll(config.inputSelector));
-  const submit = elem.querySelector(config.buttonClass);
-  const form = elem.querySelector(config.formSelector);
-
   elem.classList.add('popup_visible-on');
   document.addEventListener('keydown', closePopupEsc);
+}
+
+function resetForm(form) {
+  const inputList = Array.from(form.querySelectorAll(config.inputSelector));
+  const submit = form.querySelector(config.buttonClass);
+  const formElement = form.querySelector(config.formSelector);
 
   inputList.forEach(item => {
-    checkInputValidity(form, item, config);
+    hideInputError(formElement, item, config);
     setBtnState(submit, inputList);
   });
 }
@@ -36,6 +38,7 @@ function openPopup(elem) {
 function openPopupEditProfile() {
   nameInput.value = nameProfile.textContent;
   jobInput.value = jobProfile.textContent;
+  resetForm(profilePopup);
   openPopup(profilePopup);
 }
 
@@ -53,6 +56,7 @@ function handleProfileSubmit(evt) {
 
 function openPopupAddCards() {
   formAddCard.reset();
+  resetForm(popupAddCard);
   openPopup(popupAddCard);
 }
 
@@ -114,7 +118,7 @@ function handleAddCardSubmit(evt) {
 
 function closeOverlay(evt, position) {
   if (evt.target === evt.currentTarget) {
-    closePopup(position);
+    closePopup(evt.currentTarget);
   }
 }
 
@@ -139,8 +143,8 @@ buttonCloseAddCardPopup.addEventListener('click', () => closePopup(popupAddCard)
 
 buttonCloseImgPopup.addEventListener('click', () => closePopup(imgPopup));
 
-profilePopup.addEventListener('click', (evt) => { closeOverlay(evt, profilePopup) });
+profilePopup.addEventListener('click', (evt) => { closeOverlay(evt) });
 
-popupAddCard.addEventListener('click', (evt) => { closeOverlay(evt, popupAddCard) });
+popupAddCard.addEventListener('click', (evt) => { closeOverlay(evt) });
 
-imgPopup.addEventListener('click', (evt) => { closeOverlay(evt, imgPopup) });
+imgPopup.addEventListener('click', (evt) => { closeOverlay(evt) });
