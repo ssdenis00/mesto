@@ -24,10 +24,10 @@ function openPopup(elem) {
   document.addEventListener('keydown', closePopupEsc);
 }
 
-function resetForm(form) {
-  const inputList = Array.from(form.querySelectorAll(config.inputSelector));
-  const submit = form.querySelector(config.buttonClass);
-  const formElement = form.querySelector(config.formSelector);
+function resetForm(popup) {
+  const inputList = Array.from(popup.querySelectorAll(config.inputSelector));
+  const submit = popup.querySelector(config.buttonClass);
+  const formElement = popup.querySelector(config.formSelector);
 
   inputList.forEach(item => {
     hideInputError(formElement, item, config);
