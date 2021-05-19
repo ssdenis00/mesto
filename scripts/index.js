@@ -116,7 +116,7 @@ function handleAddCardSubmit(evt) {
   closePopup(popupAddCard);
 }
 
-function closeOverlay(evt, position) {
+function closeOverlay(evt) {
   if (evt.target === evt.currentTarget) {
     closePopup(evt.currentTarget);
   }
