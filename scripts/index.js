@@ -24,17 +24,6 @@ function openPopup(elem) {
   document.addEventListener('keydown', closePopupEsc);
 }
 
-function resetForm(popup) {
-  const inputList = Array.from(popup.querySelectorAll(config.inputSelector));
-  const submit = popup.querySelector(config.buttonClass);
-  const formElement = popup.querySelector(config.formSelector);
-
-  inputList.forEach(item => {
-    hideInputError(formElement, item, config);
-    setBtnState(submit, inputList);
-  });
-}
-
 function openPopupEditProfile() {
   nameInput.value = nameProfile.textContent;
   jobInput.value = jobProfile.textContent;
@@ -123,7 +112,7 @@ function closeOverlay(evt) {
 }
 
 function closePopupEsc(evt) {
-  if (evt.key === 'Escape') {
+  if ((evt.key === 'Escape') || (evt.target === evt.currentTarget)) {
     const popup = document.querySelector('.popup_visible-on');
     closePopup(popup);
   }

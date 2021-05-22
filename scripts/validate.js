@@ -1,3 +1,13 @@
+function resetForm(popup) {
+  const inputList = Array.from(popup.querySelectorAll(config.inputSelector));
+  const submit = popup.querySelector(config.buttonClass);
+  const formElement = popup.querySelector(config.formSelector);
+  submit.disabled = true;
+  inputList.forEach(item => {
+    hideInputError(formElement, item, config);
+  });
+}
+
 const hideInputError = (formElement, inputElement, config) => {
   const { inputErrorClass, errorClass } = config;
   const errorMessage = formElement.querySelector(`#${inputElement.id}-error`);
