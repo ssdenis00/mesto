@@ -36,13 +36,12 @@ export function openPopup(elem) {
 function openPopupEditProfile() {
   nameInput.value = nameProfile.textContent;
   jobInput.value = jobProfile.textContent;
-  validProfile.resetForm(profilePopup);
+  validProfile.resetForm();
   openPopup(profilePopup);
 }
 
 function closePopup(elem) {
   elem.classList.remove('popup_visible-on');
-  elem.removeEventListener('click', closeOverlay);
   document.removeEventListener('keydown', closePopupEsc);
 }
 
@@ -55,7 +54,7 @@ function handleProfileSubmit(evt) {
 
 function openPopupAddCards() {
   formAddCard.reset();
-  validAddCard.resetForm(popupAddCard);
+  validAddCard.resetForm();
   openPopup(popupAddCard);
 }
 
@@ -90,7 +89,7 @@ function closeOverlay(evt) {
 }
 
 function closePopupEsc(evt) {
-  if ((evt.key === 'Escape') || (evt.target === evt.currentTarget)) {
+  if (evt.key === 'Escape') {
     const popup = document.querySelector('.popup_visible-on');
     closePopup(popup);
   }
