@@ -10,18 +10,17 @@ const jobInput = formEditProfile.querySelector('.popup__form-text_input_job');
 const titleInput = document.querySelector('.popup__form-text_input_title');
 const imgInput = document.querySelector('.popup__form-text_input_img');
 const popupAddCard = document.querySelector('.popup_type_add-card');
-const buttonCloseProfilePopup = document.querySelector('.popup__cross_type_edit');
 const buttonOpenProfilePopup = document.querySelector('.profile__edit-btn');
 const nameProfile = document.querySelector('.profile__name');
 const jobProfile = document.querySelector('.profile__description');
 const buttonOpenAddCardPopup = document.querySelector('.profile__add-btn');
-const buttonCloseAddCardPopup = document.querySelector('.popup__cross_type_add-card');
 const galaryGrid = document.querySelector('.galary__grid');
 export const formAddCard = document.querySelector('.popup__form_type_add-card');
 export const imgPopup = document.querySelector('.popup_type_img');
-const buttonCloseImgPopup = document.querySelector('.popup__cross_type_img');
 const validProfile = new FormValidator(config, formEditProfile);
 const validAddCard = new FormValidator(config, formAddCard);
+const popupList = Array.from(document.querySelectorAll('.popup'));
+const buttonClosePopupList = Array.from(document.querySelectorAll('.popup__cross'));
 
 validProfile.enableValidation();
 
@@ -29,7 +28,6 @@ validAddCard.enableValidation();
 
 export function openPopup(elem) {
   elem.classList.add('popup_visible-on');
-  elem.addEventListener('click', closeOverlay);
   document.addEventListener('keydown', closePopupEsc);
 }
 
@@ -62,13 +60,6 @@ function addElementInGalary(elem) {
   galaryGrid.prepend(elem);
 }
 
-initialCards.forEach((item) => {
-  const card = new Card(item, '#galary__item');
-  const cardElement = card.generateCard();
-
-  addElementInGalary(cardElement);
-});
-
 function handleAddCardSubmit(evt) {
   const obj = {
     name: titleInput.value,
@@ -95,16 +86,26 @@ function closePopupEsc(evt) {
   }
 }
 
-formAddCard.addEventListener('submit', handleAddCardSubmit);
+initialCards.forEach((item) => {
+  const card = new Card(item, '#galary__item');
+  const cardElement = card.generateCard();
 
-buttonOpenAddCardPopup.addEventListener('click', openPopupAddCards);
+  addElementInGalary(cardElement);
+});
+
+popupList.forEach((popup) => {
+  popup.addEventListener('click', closeOverlay);
+});
+
+buttonClosePopupList.forEach((buttonClose) => {
+  const popup = buttonClose.closest('.popup');
+  buttonClose.addEventListener('click', () => closePopup(popup));
+})
+
+formAddCard.addEventListener('submit', handleAddCardSubmit);
 
 formEditProfile.addEventListener('submit', handleProfileSubmit);
 
-buttonCloseProfilePopup.addEventListener('click', () => closePopup(profilePopup));
+buttonOpenAddCardPopup.addEventListener('click', openPopupAddCards);
 
 buttonOpenProfilePopup.addEventListener('click', openPopupEditProfile);
-
-buttonCloseAddCardPopup.addEventListener('click', () => closePopup(popupAddCard));
-
-buttonCloseImgPopup.addEventListener('click', () => closePopup(imgPopup));
