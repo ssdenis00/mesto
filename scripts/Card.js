@@ -1,11 +1,24 @@
-import { openPopup, imgPopup } from './index.js';
+export class Card {
+  #handleCardClick;
 
-class Card {
-  constructor(cardData, templateSelector) {
+  constructor(cardData, templateSelector, { handleCardClick }) {
     this._link = cardData.link;
     this._name = cardData.name;
     this._template = templateSelector;
+    this.#handleCardClick = handleCardClick;
   }
+
+  /* #handleOpenPopupImg(evt) {
+    const _imageGalary = this._element.querySelector('.galary__img');
+    const _description = _imageGalary.offsetParent.querySelector('.galary__title');
+    const _imagePopup = document.querySelector('.popup__img');
+    const _descriptionElement = document.querySelector('.popup__description');
+
+    evt.preventDefault();
+    _imagePopup.src = _imageGalary.src;
+    _imagePopup.alt = 'фото ' + _description.textContent;
+    _descriptionElement.textContent = _description.textContent;
+  } */
 
   _getTemplate() {
     const _cardElement = document
@@ -38,20 +51,7 @@ class Card {
 
     _like.addEventListener('click', () => { this._handleLikeButton(); });
     _trash.addEventListener('click', () => { this._handleTrashButton(); });
-    _imageLink.addEventListener('click', (evt) => { this._handleOpenPopupImg(evt); });
-  }
-
-  _handleOpenPopupImg(evt) {
-    const _imageGalary = this._element.querySelector('.galary__img');
-    const _description = _imageGalary.offsetParent.querySelector('.galary__title');
-    const _imagePopup = document.querySelector('.popup__img');
-    const _descriptionElement = document.querySelector('.popup__description');
-
-    evt.preventDefault();
-    openPopup(imgPopup);
-    _imagePopup.src = _imageGalary.src;
-    _imagePopup.alt = 'фото ' + _description.textContent;
-    _descriptionElement.textContent = _description.textContent;
+    _imageLink.addEventListener('click', this.#handleCardClick);
   }
 
   _handleLikeButton() {
@@ -64,5 +64,3 @@ class Card {
     this._element = null;
   }
 }
-
-export { Card };
