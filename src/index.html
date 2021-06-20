@@ -5,14 +5,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
   <title>Место</title>
 </head>
 
 <body>
   <div class="page">
     <header class="header page__content">
-      <img src="./images/logo.svg" alt="Логотип" class="header__logo">
+      <img src="<%=require('./images/logo.svg')%>" alt="Логотип" class="header__logo">
     </header>
     <main class="main">
       <div class="popup popup_type_edit">
@@ -59,7 +58,7 @@
       </div>
       <section class="profile page__content">
         <div class="profile__block">
-          <img src="./images/avatar.jpg" alt="Аватар" class="profile__avatar">
+          <img src="<%=require('./images/avatar.jpg')%>" alt="Аватар" class="profile__avatar">
           <div class="profile__info">
             <div class="profile__text">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -68,8 +67,8 @@
             <button class="profile__edit-btn" type="button" aria-label="открыть окно редактирования профиля"></button>
           </div>
         </div>
-        <button class="profile__add-btn" type="button" aria-label="добавить запись"><img src="./images/plus.svg"
-            alt="Плюс, добавить запись" class="profile__add-btn-img"></button>
+        <button class="profile__add-btn" type="button" aria-label="добавить запись"><img
+            src="<%=require('./images/plus.svg')%>" alt="Плюс, добавить запись" class="profile__add-btn-img"></button>
       </section>
       <section class="galary page__content">
         <ul class="galary__grid">
@@ -90,7 +89,6 @@
       </div>
     </li>
   </template>
-  <script type="module" src="./pages/index.js"></script>
 </body>
 
 </html>
