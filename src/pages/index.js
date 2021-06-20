@@ -18,7 +18,7 @@ import {
   popupImgSelector,
   configValidate,
   initialCards
-} from '../components/constants.js';
+} from '../utils/constants.js';
 
 const validProfile = new FormValidator(configValidate, formEditProfile);
 const validAddCard = new FormValidator(configValidate, formAddCard);
