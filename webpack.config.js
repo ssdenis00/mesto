@@ -30,7 +30,7 @@ module.exports = {
         type: 'asset/resource'
       },
       {
-        test: /\.css$/,
+        test: /\.css$/i,
         use: [MiniCssExtractPlugin.loader, {
           loader: 'css-loader',
           options: {
@@ -38,9 +38,9 @@ module.exports = {
           }
         },
           'postcss-loader'
-        ]
+        ],
       },
-    ]
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
