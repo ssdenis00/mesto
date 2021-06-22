@@ -5,8 +5,8 @@ export class PopupWithForm extends Popup {
   #formElement;
   #resetForm;
   #inputList;
-  constructor(popupSelector, { submitForm, resetForm }) {
-    super(popupSelector);
+  constructor(popupElement, { submitForm, resetForm }) {
+    super(popupElement);
     this.#submitForm = submitForm;
     this.#resetForm = resetForm;
   }
@@ -17,21 +17,21 @@ export class PopupWithForm extends Popup {
   }
 
   #getInputValues() {
-    this.#formElement = this.popupSelector.querySelector('.popup__form');
-    const inputArr = [];
-    this.#inputList = Array.from(this.#formElement.querySelectorAll('.popup__form-text'));
+    this.#formElement = this._popupElement.querySelector('.popup__form');
+    const inputData = {};
 
-    this.#inputList.forEach(input => {
-      inputArr.push(input.value);
-    });
+    inputData.name = document.querySelector('.popup__form-text_input_name').value;
+    inputData.job = document.querySelector('.popup__form-text_input_job').value;
+    inputData.title = document.querySelector('.popup__form-text_input_title').value;
+    inputData.link = document.querySelector('.popup__form-text_input_img').value;
 
-    return inputArr;
+    return inputData;
   }
 
   setEventListeners() {
     super.setEventListeners();
 
-    this.#formElement = this.popupSelector.querySelector('.popup__form');
+    this.#formElement = this._popupElement.querySelector('.popup__form');
 
     this.#formElement.addEventListener('submit', (evt) => { this.#handleSubmitForm(evt) });
   }

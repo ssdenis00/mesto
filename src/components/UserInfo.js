@@ -1,9 +1,6 @@
 export class UserInfo {
   #nameSelector;
   #jobSelector;
-  #jobInput;
-  #nameInput;
-  #formEditProfile
 
   constructor({ nameSelector, jobSelector }) {
     this.#nameSelector = nameSelector;
@@ -11,16 +8,16 @@ export class UserInfo {
   }
 
   getUserInfo() {
-    this.#formEditProfile = document.querySelector('.popup__form_type_edit');
-    this.#jobInput = this.#formEditProfile.querySelector('.popup__form-text_input_job');
-    this.#nameInput = this.#formEditProfile.querySelector('.popup__form-text_input_name');
+    const userData = {
+      name: this.#nameSelector.textContent,
+      job: this.#jobSelector.textContent
+    }
 
-    this.#nameInput.value = this.#nameSelector.textContent;
-    this.#jobInput.value = this.#jobSelector.textContent;
+    return userData;
   }
 
-  setUserInfo(inputArr) {
-    this.#nameSelector.textContent = inputArr[0];
-    this.#jobSelector.textContent = inputArr[1];
+  setUserInfo(inputData) {
+    this.#nameSelector.textContent = inputData.name;
+    this.#jobSelector.textContent = inputData.job;
   }
 }

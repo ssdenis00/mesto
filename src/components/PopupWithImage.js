@@ -13,8 +13,8 @@ export class PopupWithImage extends Popup {
   #setImgData(cardElement) {
     const imageGalary = cardElement.querySelector('.galary__img');
     const description = imageGalary.offsetParent.querySelector('.galary__title');
-    const imagePopup = document.querySelector('.popup__img');
-    const descriptionElement = document.querySelector('.popup__description');
+    const imagePopup = this._popupElement.querySelector('.popup__img');
+    const descriptionElement = this._popupElement.querySelector('.popup__description');
 
     imagePopup.src = imageGalary.src;
     imagePopup.alt = 'фото ' + description.textContent;

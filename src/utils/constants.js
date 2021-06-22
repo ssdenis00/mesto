@@ -8,30 +8,33 @@ export const buttonOpenAddCardPopup = document.querySelector('.profile__add-btn'
 export const galaryGrid = document.querySelector('.galary__grid');
 export const formAddCard = document.querySelector('.popup__form_type_add-card');
 export const popupImgSelector = document.querySelector('.popup_type_img');
+export const templateSelector = '#galary__item';
+export const jobInput = document.querySelector('.popup__form-text_input_job');
+export const nameInput = document.querySelector('.popup__form-text_input_name');
 
 export const initialCards = [
   {
-    name: 'Архыз',
+    title: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
   },
   {
-    name: 'Челябинская область',
+    title: 'Челябинская область',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
   },
   {
-    name: 'Иваново',
+    title: 'Иваново',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
   },
   {
-    name: 'Камчатка',
+    title: 'Камчатка',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
   },
   {
-    name: 'Холмогорский район',
+    title: 'Холмогорский район',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
   },
   {
-    name: 'Байкал',
+    title: 'Байкал',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
