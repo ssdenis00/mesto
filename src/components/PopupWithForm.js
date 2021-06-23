@@ -19,11 +19,11 @@ export class PopupWithForm extends Popup {
   #getInputValues() {
     this.#formElement = this._popupElement.querySelector('.popup__form');
     const inputData = {};
+    this.#inputList = this.#formElement.querySelectorAll('.popup__form-text');
 
-    inputData.name = document.querySelector('.popup__form-text_input_name').value;
-    inputData.job = document.querySelector('.popup__form-text_input_job').value;
-    inputData.title = document.querySelector('.popup__form-text_input_title').value;
-    inputData.link = document.querySelector('.popup__form-text_input_img').value;
+    this.#inputList.forEach(input => {
+      inputData[input.name] = input.value;
+    });
 
     return inputData;
   }

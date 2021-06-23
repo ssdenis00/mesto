@@ -20,11 +20,11 @@
             aria-label="закрыть всплывающее окно"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
           <form action="./index.html" class="popup__form popup__form_type_edit" name="popup__form-edit" novalidate>
-            <input type="text" id="edit-title" class="popup__form-text popup__form-text_input_name"
-              name="popup__form-text_name" placeholder="Имя" minlength="2" maxlength="40" required>
+            <input type="text" id="edit-title" class="popup__form-text popup__form-text_input_name" name="name"
+              placeholder="Имя" minlength="2" maxlength="40" required>
             <span class="popup__form-error" id="edit-title-error"></span>
-            <input type="text" id="edit-description" class="popup__form-text popup__form-text_input_job"
-              name="popup__form-text_job" placeholder="Вид деятельности" minlength="2" maxlength="200" required>
+            <input type="text" id="edit-description" class="popup__form-text popup__form-text_input_job" name="job"
+              placeholder="Вид деятельности" minlength="2" maxlength="200" required>
             <span class="popup__form-error" id="edit-description-error"></span>
             <button type="submit" class="popup__btn popup__btn_type_edit">Сохранить</button>
           </form>
@@ -36,11 +36,11 @@
             aria-label="закрыть всплывающее окно"></button>
           <h2 class="popup__title">Новое место</h2>
           <form action="./index.html" class="popup__form popup__form_type_add-card" name="popup__form-add">
-            <input type="text" id="place-name" class="popup__form-text popup__form-text_input_title"
-              name="popup__form-text_title" placeholder="Название" minlength="2" maxlength="30" required>
+            <input type="text" id="place-name" class="popup__form-text popup__form-text_input_title" name="title"
+              placeholder="Название" minlength="2" maxlength="30" required>
             <span class="popup__form-error" id="place-name-error"></span>
-            <input type="url" id="place-link" class="popup__form-text popup__form-text_input_img"
-              name="popup__form-text_img" placeholder="Ссылка на картинку" required>
+            <input type="url" id="place-link" class="popup__form-text popup__form-text_input_img" name="link"
+              placeholder="Ссылка на картинку" required>
             <span class="popup__form-error" id="place-link-error"></span>
             <button type="submit" class="popup__btn popup__btn_type_card">Создать</button>
           </form>
