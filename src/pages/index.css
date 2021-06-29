@@ -44,6 +44,7 @@
 @import url('../blocks/galary/__title/galary__title.css');
 @import url('../blocks/galary/__like/galary__like.css');
 @import url('../blocks/galary/__like/_active/galary__like_active.css');
+@import url('../blocks/galary/__like-count/galary__like-count.css');
 
 @import url('../blocks/footer/footer.css');
 @import url('../blocks/footer/__author/footer__author.css');
