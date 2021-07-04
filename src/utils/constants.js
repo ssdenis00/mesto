@@ -11,37 +11,23 @@ export const popupImgSelector = document.querySelector('.popup_type_img');
 export const templateSelector = '#galary__item';
 export const jobInput = document.querySelector('.popup__form-text_input_job');
 export const nameInput = document.querySelector('.popup__form-text_input_name');
-
-export const initialCards = [
-  {
-    title: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    title: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    title: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    title: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    title: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    title: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
+export const popupConfirmSelector = document.querySelector('.popup_type_delete');
+export const popupAvatarSelector = document.querySelector('.popup_type_avatar');
+export const buttonOpenPopupAvatar = document.querySelector('.profile__avatar-overlay');
+export const avatar = document.querySelector('.profile__avatar');
+export const formAvatar = document.querySelector('.popup__form_type_avatar');
 
 export const configValidate = {
   inputSelector: '.popup__form-text',
   buttonClass: '.popup__btn',
   inputErrorClass: 'popup__form-text_state_error',
   errorClass: 'popup__form-error_visible'
+};
+
+export const optionsApi = {
+  url: 'https://mesto.nomoreparties.co/v1/cohort-25',
+  headers: {
+    authorization: '374fcf1a-996b-4e35-88d8-3be82638086e',
+    'Content-Type': 'application/json'
+  }
 };

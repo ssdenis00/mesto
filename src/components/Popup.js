@@ -1,5 +1,4 @@
 export class Popup {
-  /* #popupElement; */
   constructor(popupElement) {
     this._popupElement = popupElement;
   }

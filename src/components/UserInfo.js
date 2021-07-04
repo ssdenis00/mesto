@@ -1,16 +1,16 @@
 export class UserInfo {
   #nameSelector;
-  #jobSelector;
+  #aboutSelector;
 
-  constructor({ nameSelector, jobSelector }) {
+  constructor({ nameSelector, aboutSelector }) {
     this.#nameSelector = nameSelector;
-    this.#jobSelector = jobSelector;
+    this.#aboutSelector = aboutSelector;
   }
 
   getUserInfo() {
     const userData = {
       name: this.#nameSelector.textContent,
-      job: this.#jobSelector.textContent
+      about: this.#aboutSelector.textContent
     }
 
     return userData;
@@ -18,6 +18,10 @@ export class UserInfo {
 
   setUserInfo(inputData) {
     this.#nameSelector.textContent = inputData.name;
-    this.#jobSelector.textContent = inputData.job;
+    this.#aboutSelector.textContent = inputData.about;
+  }
+
+  setUserAvatar(data) {
+
   }
 }

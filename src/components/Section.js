@@ -3,16 +3,15 @@ export class Section {
   #renderer;
   #containerSelector;
 
-  constructor({ items, renderer }, containerSelector) {
-    this.#items = items;
+  constructor({ renderer }, containerSelector) {
     this.#renderer = renderer;
     this.#containerSelector = containerSelector;
   }
 
-  rendererElement() {
-    this.#items.forEach(item => {
-      this.#renderer(item);
-    });
+  rendererElement(items) {
+    for (let i = items.length - 1; i >= 0; --i) {
+      this.#renderer(items[i]);
+    }
   }
 
   addItem(elem) {
