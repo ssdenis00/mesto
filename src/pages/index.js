@@ -6,6 +6,7 @@ import { Api } from '../components/Api.js'
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import { PopupWithFormSubmit } from '../components/PopupWithFormSubmit.js';
+import { renderLoading } from '../utils/renderLoading.js';
 import '../pages/index.css';
 import {
   popupProfileSelector,
@@ -27,7 +28,8 @@ import {
   popupAvatarSelector,
   buttonOpenPopupAvatar,
   formAvatar,
-  avatar
+  avatar,
+  formConfirm
 } from '../utils/constants.js';
 
 const api = new Api(optionsApi);
@@ -41,7 +43,6 @@ api.getUserInfo()
 
 api.getInitialCards()
   .then(cards => {
-    console.log(cards);
     sectionInitial.rendererElement(cards);
   });
 
@@ -67,6 +68,12 @@ const createCard = (obj) => {
     },
     handleTrashBtn: () => {
       popupConfirm.open(cardElement);
+    },
+    addLike: () => {
+      api.addLike(card.getImgId());
+    },
+    removeLike: () => {
+      api.removeLike(card.getImgId());
     }
   }
   );
@@ -81,6 +88,7 @@ const createCard = (obj) => {
 
 const popupAddCard = new PopupWithForm(popupAddCardSelector, {
   submitForm: (inputData) => {
+    renderLoading(true, formAddCard);
     api.addCard(inputData)
       .then(res => {
         sectionInitial.addItem(createCard(res));
@@ -96,7 +104,7 @@ const userInfo = new UserInfo({ nameSelector: nameProfile, aboutSelector: jobPro
 
 const popupProfile = new PopupWithForm(popupProfileSelector, {
   submitForm: (inputData) => {
-
+    renderLoading(true, formEditProfile);
     api.editUserInfo(inputData)
       .then(res => {
         userInfo.setUserInfo(res);
@@ -110,6 +118,7 @@ const popupProfile = new PopupWithForm(popupProfileSelector, {
 
 const popupConfirm = new PopupWithFormSubmit(popupConfirmSelector, {
   submitForm: (evt) => {
+    renderLoading(true, formConfirm);
     evt.preventDefault();
     api.deleteCard(popupConfirm.setImgId());
     popupConfirm.removeCard();
@@ -117,10 +126,9 @@ const popupConfirm = new PopupWithFormSubmit(popupConfirmSelector, {
   }
 });
 
-popupConfirm.setEventListeners();
-
 const popupAvatar = new PopupWithForm(popupAvatarSelector, {
   submitForm: (inputData) => {
+    renderLoading(true, formAvatar);
     api.changeAvatar(inputData)
       .then(res => {
         avatar.src = res.avatar;
@@ -131,8 +139,6 @@ const popupAvatar = new PopupWithForm(popupAvatarSelector, {
     validAvatar.resetForm();
   }
 });
-
-popupAvatar.setEventListeners();
 
 function openPopupEditProfile() {
   nameInput.value = userInfo.getUserInfo().name;
@@ -149,6 +155,10 @@ validAvatar.enableValidation();
 popupAddCard.setEventListeners();
 
 popupProfile.setEventListeners();
+
+popupConfirm.setEventListeners();
+
+popupAvatar.setEventListeners();
 
 buttonOpenAddCardPopup.addEventListener('click', () => { popupAddCard.open() });
 

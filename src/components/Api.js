@@ -1,3 +1,11 @@
+import { renderLoading } from "../utils/renderLoading.js";
+import {
+  formAvatar,
+  formEditProfile,
+  formAddCard,
+  formConfirm
+} from '../utils/constants.js'
+
 export class Api {
   #url;
   #headers;
@@ -37,7 +45,8 @@ export class Api {
       })
       .catch(err => {
         console.log(err);
-      });
+      })
+      .finally(renderLoading(false, formEditProfile));
   }
 
   getInitialCards() {
@@ -73,7 +82,8 @@ export class Api {
       })
       .catch(err => {
         console.log(err);
-      });
+      })
+      .finally(renderLoading(false, formAddCard));
   }
 
   changeAvatar(data) {
@@ -92,7 +102,8 @@ export class Api {
       })
       .catch(err => {
         console.log(err);
-      });
+      })
+      .finally(renderLoading(false, formAvatar));
   }
 
   deleteCard(cardId) {
@@ -108,7 +119,39 @@ export class Api {
       })
       .catch(err => {
         console.log(err);
+      })
+      .finally(renderLoading(false, formConfirm));
+  }
+
+  addLike(cardId) {
+    return fetch(`${this.#url}/cards/likes/${cardId}`, {
+      method: 'PUT',
+      headers: this.#headers
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+      })
+      .catch(err => {
+        console.log(err);
       });
   }
 
+  removeLike(cardId) {
+    return fetch(`${this.#url}/cards/likes/${cardId}`, {
+      method: 'DELETE',
+      headers: this.#headers
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 }
