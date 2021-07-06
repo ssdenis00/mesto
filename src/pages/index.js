@@ -39,8 +39,6 @@ Promise.all([
   api.getInitialCards()
 ])
   .then(res => {
-    console.log(res);
-
     userInfo.setUserInfo(res[0]);
     userInfo.setAvatar(res[0].avatar);
 
