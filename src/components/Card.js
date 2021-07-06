@@ -12,13 +12,23 @@ export class Card {
   #countLikeSelector;
   #addLike;
   #removeLike;
+  #myId;
+  #galaryImage;
+  #trash;
 
-  constructor(cardData, templateSelector, { handleCardClick, handleTrashBtn, addLike, removeLike }) {
+  constructor(cardData, templateSelector, id,
+    {
+      handleCardClick,
+      handleTrashBtn,
+      addLike,
+      removeLike
+    }) {
     this.#link = cardData.link;
     this.#name = cardData.name;
     this.#likes = cardData.likes;
     this.#id = cardData._id;
     this.#owner = cardData.owner;
+    this.#myId = id;
     this.#template = templateSelector;
     this.#handleCardClick = handleCardClick;
     this.#handleTrashBtn = handleTrashBtn;
@@ -40,21 +50,19 @@ export class Card {
     this.#element = this.#getTemplate();
     this.#like = this.#element.querySelector('.galary__like');
     const title = this.#element.querySelector('.galary__title');
-    const image = this.#element.querySelector('.galary__img');
+    this.#galaryImage = this.#element.querySelector('.galary__img');
     this.#countLikeSelector = this.#element.querySelector('.galary__like-count');
 
     title.textContent = this.#name;
-    image.src = this.#link;
-    image.alt = 'фото ' + this.#name;
+    this.#galaryImage.src = this.#link;
+    this.#galaryImage.alt = 'фото ' + this.#name;
     this.#countLikeSelector.textContent = this.#likes.length;
-    image.id = this.#id;
-    image.owner = this.#owner;
+    this.#galaryImage.id = this.#id;
+    this.#galaryImage.owner = this.#owner;
 
-    this.#likes.forEach(element => {
-      if (element._id === "cbb319985b5d9c3ff901af5e") {
-        this.#like.classList.add('galary__like_active');
-      }
-    });
+    this.#checkLiked();
+
+    this.#checkOwnerCard();
 
     this.#setEventListeners();
 
@@ -62,19 +70,33 @@ export class Card {
   }
 
   #setEventListeners() {
-
-    const trash = this.#element.querySelector('.galary__delete-item');
     const imageLink = this.#element.querySelector('.galary__link-img');
 
     this.#like.addEventListener('click', () => {
       if (this.#like.classList.contains('galary__like_active')) {
-        this.removeLike();
+        this.#removeLike();
       } else {
-        this.addLike();
+        this.#addLike();
       }
     });
-    trash.addEventListener('click', this.#handleTrashBtn);
+    this.#trash.addEventListener('click', this.#handleTrashBtn);
     imageLink.addEventListener('click', this.#handleCardClick);
+  }
+
+  #checkLiked() {
+    this.#likes.forEach(element => {
+      if (element._id === this.#myId) {
+        this.#like.classList.add('galary__like_active');
+      }
+    });
+  }
+
+  #checkOwnerCard() {
+    this.#trash = this.#element.querySelector('.galary__delete-item');
+
+    if (this.#galaryImage.owner._id !== this.#myId) {
+      this.#trash.remove();
+    }
   }
 
   getImgId() {
@@ -82,14 +104,12 @@ export class Card {
   }
 
   addLike() {
-    this.#addLike();
     this.#like.classList.add('galary__like_active');
     this.#likes.length = this.#likes.length + 1;
     this.#countLikeSelector.textContent = this.#likes.length;
   }
 
   removeLike() {
-    this.#removeLike();
     this.#like.classList.remove('galary__like_active');
     this.#likes.length = this.#likes.length - 1;
     this.#countLikeSelector.textContent = this.#likes.length;

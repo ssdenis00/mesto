@@ -1,4 +1,5 @@
 export class Popup {
+  #btn;
   constructor(popupElement) {
     this._popupElement = popupElement;
   }
@@ -30,5 +31,14 @@ export class Popup {
 
     buttonClose.addEventListener('click', () => { this.close() });
     this._popupElement.addEventListener('click', (evt) => { this.#closeOverlay(evt) });
+  }
+
+  renderLoading(value, textReturn) {
+    this.#btn = this._popupElement.querySelector('.popup__btn');
+    if (value) {
+      this.#btn.textContent = 'Сохранение...';
+    } else {
+      this.#btn.textContent = textReturn;
+    }
   }
 };

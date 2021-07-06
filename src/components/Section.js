@@ -1,5 +1,4 @@
 export class Section {
-  #items;
   #renderer;
   #containerSelector;
 
@@ -8,9 +7,9 @@ export class Section {
     this.#containerSelector = containerSelector;
   }
 
-  rendererElement(items) {
+  rendererElement(items, id) {
     for (let i = items.length - 1; i >= 0; --i) {
-      this.#renderer(items[i]);
+      this.#renderer(items[i], id);
     }
   }
 

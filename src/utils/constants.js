@@ -14,7 +14,7 @@ export const nameInput = document.querySelector('.popup__form-text_input_name');
 export const popupConfirmSelector = document.querySelector('.popup_type_delete');
 export const popupAvatarSelector = document.querySelector('.popup_type_avatar');
 export const buttonOpenPopupAvatar = document.querySelector('.profile__avatar-overlay');
-export const avatar = document.querySelector('.profile__avatar');
+export const avatarSelector = document.querySelector('.profile__avatar');
 export const formAvatar = document.querySelector('.popup__form_type_avatar');
 export const formConfirm = document.querySelector('.popup__form_type_delete');
 

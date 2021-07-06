@@ -3,12 +3,10 @@ import { Popup } from './Popup.js';
 export class PopupWithForm extends Popup {
   #submitForm;
   #formElement;
-  #resetForm;
   #inputList;
-  constructor(popupElement, { submitForm, resetForm }) {
+  constructor(popupElement, { submitForm }) {
     super(popupElement);
     this.#submitForm = submitForm;
-    this.#resetForm = resetForm;
   }
 
   #handleSubmitForm(evt) {
@@ -39,6 +37,5 @@ export class PopupWithForm extends Popup {
   close() {
     super.close();
     this.#formElement.reset();
-    this.#resetForm();
   }
 }
