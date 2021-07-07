@@ -12,7 +12,8 @@ export class UserInfo {
   getUserInfo() {
     const userData = {
       name: this.#nameSelector.textContent,
-      about: this.#aboutSelector.textContent
+      about: this.#aboutSelector.textContent,
+      id: this.#nameSelector.id
     }
 
     return userData;

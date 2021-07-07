@@ -38,11 +38,11 @@ Promise.all([
   api.getUserInfo(),
   api.getInitialCards()
 ])
-  .then(res => {
-    userInfo.setUserInfo(res[0]);
-    userInfo.setAvatar(res[0].avatar);
+  .then(([userData, cards]) => {
+    userInfo.setUserInfo(userData);
+    userInfo.setAvatar(userData.avatar);
 
-    sectionInitial.rendererElement(res[1], res[0]._id);
+    sectionInitial.rendererElement(cards, userData._id);
   })
   .catch(err => { console.log(err) });
 
@@ -90,7 +90,7 @@ const popupAddCard = new PopupWithForm(popupAddCardSelector, {
     popupAddCard.renderLoading(true);
     api.addCard(inputData)
       .then(res => {
-        sectionInitial.addItem(createCard(res));
+        sectionInitial.addItem(createCard(res, userInfo.getUserInfo().id));
         popupAddCard.close();
         validAddCard.resetForm();
       })
